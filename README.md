@@ -38,9 +38,9 @@ This repository contains the source code for Retina Care's main API. Written in 
 
 On Unix systems, you can set environment variables by exporting them. Required env variables are listed below:
 
-1. `DB_USERNAME`:  PostgreSQL Database Username.
-2. `DB_PASSWORD`: PostgreSQL Database Password.
-3. `DB_URL`: PostgreSQL JDBC Connection URL.
+1. `DB_USERNAME`:  PostgreSQL database username.
+2. `DB_PASSWORD`: PostgreSQL database password.
+3. `DB_URL`: PostgreSQL JDBC connection URL.
 4. `POSTGRES_DB`: Database name (for container).
 5. `POSTGRES_USER`: Database user (for container).
 6. `POSTGRES_PASSWORD`: Database password (for container).
