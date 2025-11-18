@@ -41,6 +41,16 @@ On Unix systems, you can set environment variables by exporting them. Required e
 1. `DB_USERNAME`:  PostgreSQL Database Username.
 2. `DB_PASSWORD`: PostgreSQL Database Password.
 3. `DB_URL`: PostgreSQL JDBC Connection URL.
+4. `POSTGRES_DB`: Database name (for container).
+5. `POSTGRES_USER`: Database user (for container).
+6. `POSTGRES_PASSWORD`: Database password (for container).
+
+You can copy the `.env.example` file into `.env` and change as required. Then you can use this command to load them at once into context:
+
+```shell
+chmod +x ./scripts/load-env.sh
+source ./scripts/load-env.sh
+```
 
 ## Dependencies
 
