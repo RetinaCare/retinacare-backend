@@ -12,11 +12,10 @@ This repository contains the source code for Retina Care's main API. Written in 
 ## Features
 
 - Authentication: sign-up, sign-in, forget-password.
-- (TODO)
 
 ## Up and Running
 
-1. lone the repository.
+1. Clone the repository.
 
     ```shell
        git clone https://github.com/RetinaCare/spring-backend.git backend
@@ -30,8 +29,8 @@ This repository contains the source code for Retina Care's main API. Written in 
     ```shell
        chmod +x ./scripts/build-compose.sh
    
-       # the --compose flag is optional, 
-       # a single Jar is built otherwise.
+       # The --compose flag is optional. 
+       # A single Jar is built if not specified. 
        ./scripts/build-compose.sh --compose
     ```
 
