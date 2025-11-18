@@ -21,9 +21,9 @@ This repository contains the source code for Retina Care's main API. Written in 
        git clone https://github.com/RetinaCare/spring-backend.git backend
     ```
 
-2. Once opened in your editor, [IntelliJ IDEA](https://www.jetbrains.com/idea/) is recommended, install the required dependencies. Maven is our build chain of choice.
-3. The project uses [Docker](https://docker.com) and [Docker compose](https://docs.docker.com/compose/) to build the source code. We also run Redis and Postgres containers here for local testing.
-4. Set the necessary environment variables, see [here](#environment-variables).
+2. Once open in your editor, [IntelliJ IDEA](https://www.jetbrains.com/idea/) is recommended, install the required dependencies. Maven is our build chain of choice.
+3. The project uses [Docker](https://docker.com) and [Docker Compose](https://docs.docker.com/compose/) to build the source code. We also run Redis and Postgres containers here for local testing.
+4. Set the necessary environment variables, see more [here](#environment-variables).
 5. The recommended way to run the server is via Docker compose, we've prepared a script, which can be found in `/scripts/build-compose` to build and spin up the containers.
 
     ```shell
