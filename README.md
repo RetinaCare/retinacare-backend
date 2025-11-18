@@ -2,11 +2,19 @@
 
 This repository contains the source code for Retina Care's main API. Written in Java with the Spring framework, it follows best practices in developing a robust and functional REST API.
 
-# Features
+## Table Of Content
 
-- TODO
+- [Features](#features)
+- [Up and Running](#up-and-running)
+    - [Environment Variables](#environment-variables)
+- [Dependencies](#dependencies)
 
-## Setting Up Locally
+## Features
+
+- Authentication: sign-up, sign-in, forget-password.
+- (TODO)
+
+## Up and Running
 
 1. Git clone the repository into your local computer.
 
@@ -26,14 +34,19 @@ This repository contains the source code for Retina Care's main API. Written in 
        ./scripts/build-compose.sh --compose
     ```
 
-## Environment Variables
+### Environment Variables
 
-| Key           | Description                    | Default Value |
-|---------------|--------------------------------|---------------|
-| `DB_USERNAME` | PostgreSQL Database Username   | postgres      |
-| `DB_PASSWORD` | PostgreSQL Database Password   |               |
-| `DB_URL`      | PostgreSQL JDBC Connection URL |               |
+1. `DB_USERNAME`:  PostgreSQL Database Username.
+2. `DB_PASSWORD`: PostgreSQL Database Password.
+3. `DB_URL`: PostgreSQL JDBC Connection URL.
 
 ## Dependencies
 
-- TODO
+- [Spring Boot](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot/)
+- [Spring Validation](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation/)
+- [Spring Web](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web/)
+- [Spring Devtools](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools/)
+- [PostgreSQL JDBC Driver](https://mvnrepository.com/artifact/org.postgresql/postgresql/)
+- [Lombok](https://mvnrepository.com/artifact/org.projectlombok/lombok/)
+- [Flyway](https://mvnrepository.com/artifact/org.flywaydb/flyway-core/)
+- [Spring Doc OpenAPI](https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui/)
