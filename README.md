@@ -6,7 +6,7 @@ This repository contains the source code for Retina Care's main API. Written in 
 
 - [Features](#features)
 - [Up and Running](#up-and-running)
-    - [Environment Variables](#environment-variables)
+- [Environment Variables](#environment-variables)
 - [Dependencies](#dependencies)
 
 ## Features
@@ -16,7 +16,7 @@ This repository contains the source code for Retina Care's main API. Written in 
 
 ## Up and Running
 
-1. Clone the repository.
+1. lone the repository.
 
     ```shell
        git clone https://github.com/RetinaCare/spring-backend.git backend
@@ -35,7 +35,7 @@ This repository contains the source code for Retina Care's main API. Written in 
        ./scripts/build-compose.sh --compose
     ```
 
-### Environment Variables
+## Environment Variables
 
 On Unix systems, you can set environment variables by exporting them. Required env variables are listed below:
 
