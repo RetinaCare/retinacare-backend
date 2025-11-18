@@ -69,6 +69,8 @@
     </dependencies>
 
     <build>
+        <finalName>RetinaCareBackend</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
