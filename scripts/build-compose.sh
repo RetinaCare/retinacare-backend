@@ -9,6 +9,6 @@ else
 fi
 
 # We use compose to spin up services
-if [ $2 = "--compose" ]; then
+if [ "$1" = "--compose" ]; then
   docker-compose down && docker-compose up --build
 fi
