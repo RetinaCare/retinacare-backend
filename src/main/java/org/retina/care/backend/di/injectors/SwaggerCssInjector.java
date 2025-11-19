@@ -43,7 +43,7 @@ public class SwaggerCssInjector extends SwaggerIndexPageTransformer {
     }
 
     private String injectCss(String html) {
-        String cssPath = "/api/v1/static/swagger.css";
+        String cssPath = "https://cdn.jsdelivr.net/gh/RetinaCare/swagger@main/swagger.css";
         return html.replace("</head>", "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + cssPath + "\" /></head>");
     }
 }
