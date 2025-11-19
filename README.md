@@ -58,6 +58,7 @@ source ./scripts/load-env.sh
 - [Spring Validation](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation/)
 - [Spring Web](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web/)
 - [Spring Devtools](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools/)
+- [Spring Security](https://mvnrepository.com/artifact/org.springframework.security/spring-security-core)
 - [PostgreSQL JDBC Driver](https://mvnrepository.com/artifact/org.postgresql/postgresql/)
 - [Lombok](https://mvnrepository.com/artifact/org.projectlombok/lombok/)
 - [Flyway](https://mvnrepository.com/artifact/org.flywaydb/flyway-core/)
