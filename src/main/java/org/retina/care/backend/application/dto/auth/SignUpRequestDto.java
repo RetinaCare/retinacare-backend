@@ -9,13 +9,13 @@ import lombok.Data;
 public class SignUpRequestDto {
     @NotBlank(message = "Full name is required")
     @Size(min = 4, max = 128, message = "Fullname must be between 6-128 characters")
-    public String fullname;
+    private String fullname;
 
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
-    public String email;
+    private String email;
 
     @NotBlank(message = "Password is required")
     @Size(min = 6, max = 128, message = "Password must be between 6-128 characters")
-    public String password;
+    private String password;
 }
