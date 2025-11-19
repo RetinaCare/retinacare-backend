@@ -2,7 +2,7 @@ package org.retina.care.backend.application.services;
 
 import org.retina.care.backend.domain.models.User;
 import org.retina.care.backend.domain.repositories.UserRepository;
-import org.retina.care.backend.dto.auth.SignUpRequestDto;
+import org.retina.care.backend.application.dto.auth.SignUpRequestDto;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

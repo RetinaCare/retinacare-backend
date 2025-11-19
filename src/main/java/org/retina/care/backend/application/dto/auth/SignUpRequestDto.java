@@ -1,4 +1,4 @@
-package org.retina.care.backend.dto.auth;
+package org.retina.care.backend.application.dto.auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
