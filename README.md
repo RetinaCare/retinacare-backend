@@ -44,6 +44,7 @@ On Unix systems, you can set environment variables by exporting them. Required e
 4. `POSTGRES_DB`: Database name (for container).
 5. `POSTGRES_USER`: Database user (for container).
 6. `POSTGRES_PASSWORD`: Database password (for container).
+7. `JWT_SECRET`: Jwt HMAC SHA 256.
 
 You can copy the `.env.example` file into `.env` and change as required. Then you can use this command to load them at once into context:
 
