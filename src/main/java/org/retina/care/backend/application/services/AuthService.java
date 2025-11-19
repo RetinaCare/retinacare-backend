@@ -1,6 +1,6 @@
 package org.retina.care.backend.application.services;
 
-import org.retina.care.backend.domain.models.User;
+import org.retina.care.backend.domain.models.UserEntity;
 import org.retina.care.backend.domain.repositories.UserRepository;
 import org.retina.care.backend.application.dto.auth.SignUpRequestDto;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,8 +16,8 @@ public class AuthService {
        this.passwordEncoder = passwordEncoder;
     }
 
-    public User create(SignUpRequestDto dto) {
-        User user = new User();
+    public UserEntity create(SignUpRequestDto dto) {
+        UserEntity user = new UserEntity();
 
         user.setFullname(dto.getFullname());
         user.setEmail(dto.getEmail());
