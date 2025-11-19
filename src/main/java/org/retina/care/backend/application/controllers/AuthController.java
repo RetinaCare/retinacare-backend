@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     // ! TODO: Define service here
 
-    @PostMapping("/signup")
-    public ResponseEntity<HttpResponse<String>> signUp() {
-        // ! TODO: Update response
-    }
+//    @PostMapping("/signup")
+//    public ResponseEntity<HttpResponse<String>> signUp() {
+//        // ! TODO: Update response
+//    }
 }
