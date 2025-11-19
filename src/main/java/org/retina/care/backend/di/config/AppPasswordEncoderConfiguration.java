@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class AppPasswordEncoderConfiguration {
     @Bean
-    public PasswordEncoder PasswordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         final int SALT_LENGTH = 16;
         final int PARALLELISM_FACTOR = 1;
         final int ITERATIONS = 10;
