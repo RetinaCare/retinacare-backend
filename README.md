@@ -30,7 +30,7 @@ This repository contains the source code for Retina Care's main API. Written in 
    chmod +x ./scripts/build-compose.sh
 
    # The --compose flag is optional. 
-   # A single Jar is built if not specified. 
+   # A single jar is built if not specified. 
    ./scripts/build-compose.sh --compose
     ```
 
