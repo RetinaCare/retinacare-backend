@@ -1,6 +1,8 @@
 package org.retina.care.backend.application.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -40,8 +42,16 @@ public class AuthController {
     @Operation(summary = "Process user registration.")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Sign up successful."),
-            @ApiResponse(responseCode = "400", description = "Client error with request."),
-            @ApiResponse(responseCode = "500", description = "Internal server error.")
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Client error with request.",
+                    content = @Content(schema = @Schema(implementation = HttpResponse.class))
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Internal server error.",
+                    content = @Content(schema = @Schema(implementation = HttpResponse.class))
+            )
     })
     public ResponseEntity<HttpResponse<SignUpResponseDto>> signUp(@Valid @RequestBody SignUpRequestDto dto) {
         UserEntity newUser = this.authService.signup(dto);

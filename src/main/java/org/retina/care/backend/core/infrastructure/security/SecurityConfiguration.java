@@ -33,7 +33,7 @@ public class SecurityConfiguration {
         // REST services are stateless, so there's no need for CSRF protection.
         http.csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/auth/**", "/health", "/")
+                    .requestMatchers("/", "/auth/**", "/health", "/swagger", "/swagger-ui/**", "/openapi/**")
                     .permitAll()
                     .anyRequest().authenticated()
             )
