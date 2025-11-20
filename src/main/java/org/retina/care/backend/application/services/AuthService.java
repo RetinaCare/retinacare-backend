@@ -16,7 +16,8 @@ public class AuthService {
        this.passwordEncoder = passwordEncoder;
     }
 
-    public UserEntity create(SignUpRequestDto dto) {
+    public UserEntity signup(SignUpRequestDto dto) {
+        // ! TODO: Prevent duplicate sign-ups
         UserEntity user = new UserEntity();
 
         user.setFullname(dto.getFullname());
