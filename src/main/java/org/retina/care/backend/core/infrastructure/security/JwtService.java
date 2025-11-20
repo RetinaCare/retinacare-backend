@@ -40,13 +40,14 @@ public class JwtService {
     // Token is validated when the user details from our request matches
     // the one in the token and that the token has not expired yet.
     public Boolean validateToken(String token, UserDetails userDetails) {
-       final String username = extractUsername(token);
-       return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
+        // Technically, what we're working with is the email subject.
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
-    public AccessToken generateAccessToken(String username) {
+    public AccessToken generateAccessToken(String email) {
         Map<String, Object> claims = new HashMap<>();
-        String token = createToken(claims, username, accessTokenExpirationMs);
+        String token = createToken(claims, email, accessTokenExpirationMs);
         return new AccessToken(token, Instant.now().plusMillis(accessTokenExpirationMs));
     }
 
@@ -74,11 +75,11 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    // Jwt Builder - claims are passed - along with expiration and username subject.
-    private String createToken(Map<String, Object> claims, String username, Long expiration) {
+    // Jwt Builder - claims are passed - along with expiration and email subject.
+    private String createToken(Map<String, Object> claims, String email, Long expiration) {
         return Jwts.builder()
                 .claims().add(claims)
-                .subject(username)
+                .subject(email)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + expiration))
                 .and().signWith(getSignKey())
