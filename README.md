@@ -11,7 +11,7 @@ This repository contains the source code for Retina Care's main API. Written in 
 
 ## Features
 
-- Authentication: sign-up, sign-in, forget-password.
+- Authentication: sign-up, sign-in, forget-password using stateless JWTs.
 
 ## Up and Running
 

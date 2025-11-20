@@ -5,10 +5,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.retina.care.backend.application.dto.auth.AuthPayload;
 import org.retina.care.backend.application.dto.auth.SignUpRequestDto;
 import org.retina.care.backend.application.dto.auth.SignUpResponseDto;
 import org.retina.care.backend.application.services.AuthService;
 import org.retina.care.backend.core.dto.HttpResponse;
+import org.retina.care.backend.core.infrastructure.security.JwtService;
 import org.retina.care.backend.domain.models.UserEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Authentication / Authorization")
 public class AuthController {
     private final AuthService authService;
+    private final JwtService jwtService;
 
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService, JwtService jwtService) {
         this.authService = authService;
+        this.jwtService = jwtService;
     }
 
     @PostMapping("/signup")
@@ -36,11 +40,16 @@ public class AuthController {
     })
     public ResponseEntity<HttpResponse<SignUpResponseDto>> signUp(@Valid @RequestBody SignUpRequestDto dto) {
         UserEntity newUser = this.authService.create(dto);
-        // ! TODO: Generate access and refresh tokens here
+        String accessToken = this.jwtService.generateAccessToken(newUser.getFullname());
         SignUpResponseDto responseDto = new SignUpResponseDto(
                 newUser.getUserId(),
                 newUser.getFullname(),
-                newUser.getEmail()
+                newUser.getEmail(),
+                new AuthPayload(
+                        "Bearer",
+                        accessToken,
+                        ""
+                )
         );
         return new ResponseEntity<>(HttpResponse.Created("Sign up successful", responseDto),  HttpStatus.CREATED);
     }

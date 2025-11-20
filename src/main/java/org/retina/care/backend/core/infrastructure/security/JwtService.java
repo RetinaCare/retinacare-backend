@@ -47,7 +47,6 @@ public class JwtService {
     }
 
     public String generateAccessToken(String username) {
-        // ! TODO: Might have to look into claims
         Map<String, Object> claims = new HashMap<>();
         return createToken(claims, username, accessTokenExpirationMs);
     }
@@ -90,11 +89,10 @@ public class JwtService {
     private String createToken(Map<String, Object> claims, String username, Long expiration) {
         return Jwts.builder()
                 .claims().add(claims)
-                .and()
                 .subject(username)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(getSignKey())
+                .and().signWith(getSignKey())
                 .compact();
     }
 }

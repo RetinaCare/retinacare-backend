@@ -8,7 +8,8 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 public class SignUpResponseDto {
-    public UUID userId;
-    public String fullname;
-    public String email;
+    private UUID userId;
+    private String fullname;
+    private String email;
+    private AuthPayload auth;
 }
