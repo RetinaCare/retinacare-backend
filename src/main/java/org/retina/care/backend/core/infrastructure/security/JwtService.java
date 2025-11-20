@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.crypto.SecretKey;
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,9 +22,6 @@ public class JwtService {
 
     @Value("${jwt.access-expiration}")
     private Long accessTokenExpirationMs;
-
-    @Value("${jwt.refresh-expiration}")
-    private Long refreshTokenExpirationMs;
 
     // -------------------------- METHODS -------------------------------------
 
@@ -46,19 +44,10 @@ public class JwtService {
        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
-    public String generateAccessToken(String username) {
+    public AccessToken generateAccessToken(String username) {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, username, accessTokenExpirationMs);
-    }
-
-    public String generateAccessToken(UserDetails userDetails) {
-        Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userDetails.getUsername(), accessTokenExpirationMs);
-    }
-    
-    public String generateRefreshToken(UserDetails userDetails) {
-        Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userDetails.getUsername(), refreshTokenExpirationMs);
+        String token = createToken(claims, username, accessTokenExpirationMs);
+        return new AccessToken(token, Instant.now().plusMillis(accessTokenExpirationMs));
     }
 
     // -------------- UTILITY / PRIVATE METHODS -----------------------------
