@@ -1,4 +1,4 @@
-package org.retina.care.backend.application.services;
+package org.retina.care.backend.core.infrastructure.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
