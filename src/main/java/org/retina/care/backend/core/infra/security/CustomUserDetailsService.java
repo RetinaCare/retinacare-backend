@@ -1,4 +1,4 @@
-package org.retina.care.backend.core.infrastructure.security;
+package org.retina.care.backend.core.infra.security;
 
 import org.retina.care.backend.domain.models.UserEntity;
 import org.retina.care.backend.domain.repositories.UserRepository;

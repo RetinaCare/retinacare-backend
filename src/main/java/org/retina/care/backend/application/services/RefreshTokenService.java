@@ -1,7 +1,7 @@
 package org.retina.care.backend.application.services;
 
 import jakarta.transaction.Transactional;
-import org.retina.care.backend.core.infrastructure.security.JwtService;
+import org.retina.care.backend.core.infra.security.JwtService;
 import org.retina.care.backend.domain.models.RefreshTokenEntity;
 import org.retina.care.backend.domain.models.UserEntity;
 import org.retina.care.backend.domain.repositories.RefreshTokenRepository;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 

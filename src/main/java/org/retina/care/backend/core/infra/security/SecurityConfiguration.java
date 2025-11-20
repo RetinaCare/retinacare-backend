@@ -1,4 +1,4 @@
-package org.retina.care.backend.core.infrastructure.security;
+package org.retina.care.backend.core.infra.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
