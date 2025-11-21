@@ -39,11 +39,47 @@ public class HttpResponse<T> {
         );
     }
 
+    public static <T> HttpResponse<T> NotFound(String message, String error) {
+        return new HttpResponse<>(
+                message,
+                error,
+                HttpStatus.NOT_FOUND.value(),
+                null
+        );
+    }
+
     public static <T> HttpResponse<T> BadRequest(String message, String error) {
         return new HttpResponse<>(
                 message,
                 error,
                 HttpStatus.BAD_REQUEST.value(),
+                null
+        );
+    }
+
+    public static <T> HttpResponse<T> Unauthorized(String message, String error) {
+        return new HttpResponse<>(
+                message,
+                error,
+                HttpStatus.UNAUTHORIZED.value(),
+                null
+        );
+    }
+
+    public static <T> HttpResponse<T> Forbidden(String message, String error) {
+        return new HttpResponse<>(
+                message,
+                error,
+                HttpStatus.FORBIDDEN.value(),
+                null
+        );
+    }
+
+    public static <T> HttpResponse<T> InternalError() {
+        return new HttpResponse<>(
+                "Internal Server Error",
+                "cannot proceed with this request",
+                HttpStatus.FORBIDDEN.value(),
                 null
         );
     }
