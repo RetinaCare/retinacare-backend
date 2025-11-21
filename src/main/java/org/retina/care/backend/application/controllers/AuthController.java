@@ -28,6 +28,7 @@ public class AuthController {
         this.authService = authService;
     }
 
+
     @PostMapping("/signup")
     @Operation(summary = "Process user registration.")
     @ApiResponses({
@@ -61,10 +62,11 @@ public class AuthController {
         }
     }
 
+
     @PostMapping("/signin")
     @Operation(summary = "Processes user sign-ins.")
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Sign in successful."),
+            @ApiResponse(responseCode = "200", description = "Sign in successful."),
             @ApiResponse(
                     responseCode = "400",
                     description = "Client error with request.",
@@ -82,6 +84,40 @@ public class AuthController {
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(HttpResponse.Ok("Sign in successful", payload));
+        } catch (Exception e) {
+            if (e instanceof BadRequestException) {
+                return ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body(HttpResponse.BadRequest("Bad Request", e.getMessage()));
+            }
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(HttpResponse.InternalError());
+        }
+    }
+
+
+    @PostMapping("/refresh")
+    @Operation(summary = "Refresh access tokens.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Successfully refreshed tokens"),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Client error with request.",
+                    content = @Content(schema = @Schema(implementation = HttpResponse.class))
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Internal server error.",
+                    content = @Content(schema = @Schema(implementation = HttpResponse.class))
+            )
+    })
+    public ResponseEntity<HttpResponse<RefreshResponseDto>> refreshAccess(@Valid @RequestBody RefreshRequestDto dto) {
+        try {
+           RefreshResponseDto payload = this.authService.refreshAccess(dto);
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(HttpResponse.Ok("Successfully refreshed tokens", payload));
         } catch (Exception e) {
             if (e instanceof BadRequestException) {
                 return ResponseEntity
