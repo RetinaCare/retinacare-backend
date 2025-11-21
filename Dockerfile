@@ -8,7 +8,7 @@ RUN mvn clean package -DskipTests
 # ============ SECOND STAGE
 FROM eclipse-temurin:17-jre
 WORKDIR /app
-ENV APP_NAME=RetinaCareBackend
+ARG APP_NAME=RetinaCareBackend
 COPY --from=builder /app/target/${APP_NAME}.jar /app/${APP_NAME}.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app/${APP_NAME}.jar"]
