@@ -74,4 +74,13 @@ public class HttpResponse<T> {
                 null
         );
     }
+
+    public static <T> HttpResponse<T> InternalError() {
+        return new HttpResponse<>(
+                "Internal Server Error",
+                "cannot proceed with this request",
+                HttpStatus.FORBIDDEN.value(),
+                null
+        );
+    }
 }
