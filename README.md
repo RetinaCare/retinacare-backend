@@ -7,11 +7,13 @@ This repository contains the source code for Retina Care's main API. Written in 
 - [Features](#features)
 - [Up and Running](#up-and-running)
 - [Environment Variables](#environment-variables)
+- [Usage](#usage)
+  - [Authentication](#1-authentication--auth)
 - [Dependencies](#dependencies)
 
 ## Features
 
-- Authentication: sign-up, sign-in, forget-password using stateless JWTs.
+- Authentication: sign-up, sign-in, forget-password using secure stateless JWTs.
 
 ## Up and Running
 
@@ -52,6 +54,17 @@ You can copy the `.env.example` file into `.env` and change as required. Then yo
 chmod +x ./scripts/load-env.sh
 source ./scripts/load-env.sh
 ```
+
+## Usage
+
+Documentation of the available API endpoints is done with Swagger, and can be accessed on `/api/v1/swagger`. Note, that this is version 1 of the API, so all available endpoints must be prefixed with `/api/v1/`.
+
+### 1. Authentication :: `/auth`
+
+We provide endpoints for email/password based signing-in and sign-ups. As well as OAuth2 for signing in with Google.
+
+Upon successful sign-ups, you will be provided with a refresh and access token. The access token is used to access protected endpoints, such as prediction. Due to its sensitive nature, it is short-lived and only valid for **30 minutes**. The refresh token is used to renew this access token. Its longevity is much higher than the access token. It is valid for only **7 days**, after which the user must sign in again to renew both tokens.
+
 
 ## Dependencies
 
