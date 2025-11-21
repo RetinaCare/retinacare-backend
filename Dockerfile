@@ -1,9 +1,21 @@
-FROM amazoncorretto:17.0.17-alpine3.22
-
 ENV APP_NAME=RetinaCareBackend
+
+# ============ FIRST STAGE
+FROM maven:3.9.5-eclipse-temurin-17 AS builder
 WORKDIR /app
 
-COPY target/${APP_NAME}.jar /app/${APP_NAME}.jar
+COPY pom.xml .
+
+RUN mvn dependency:go-offline
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
+# ============ SECOND STAGE
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+
+COPY --from=builder /app/target/${APP_NAME}.jar /app/${APP_NAME}.jar
 
 EXPOSE 8080
-CMD java -jar /app/${APP_NAME}.jar
+ENTRYPOINT ["java", "-jar", "/app/${APP_NAME}.jar"]
