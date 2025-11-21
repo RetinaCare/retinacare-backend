@@ -9,6 +9,7 @@ This repository contains the source code for Retina Care's main API. Written in 
 - [Environment Variables](#environment-variables)
 - [Usage](#usage)
   - [Authentication](#1-authentication--auth)
+- [Scripts](#scripts)
 - [Dependencies](#dependencies)
 
 ## Features
@@ -65,6 +66,11 @@ We provide endpoints for email/password based signing-in and sign-ups. As well a
 
 Upon successful sign-ups, you will be provided with a refresh and access token. The access token is used to access protected endpoints, such as prediction. Due to its sensitive nature, it is short-lived and only valid for **30 minutes**. The refresh token is used to renew this access token. Its longevity is much higher than the access token. It is valid for only **7 days**, after which the user must sign in again to renew both tokens.
 
+## Scripts
+
+A couple of handy Unix bash scripts, found in `/scripts`, are used for quickly executing common tasks. We provide utilities for cleaning (nuclear) and migrating the database schema, as well as others for building and running the required docker containers.
+
+Details of their use can be easily understood by reading their content.
 
 ## Dependencies
 
