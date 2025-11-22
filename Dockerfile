@@ -6,7 +6,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # ============ SECOND STAGE
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:17-jre AS runner
 WORKDIR /app
 COPY --from=builder /app/target/RetinaCareBackend.jar /app/RetinaCareBackend.jar
 EXPOSE 8080
