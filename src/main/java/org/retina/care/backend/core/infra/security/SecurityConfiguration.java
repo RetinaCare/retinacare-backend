@@ -75,9 +75,7 @@ public class SecurityConfiguration {
 
         cors.setAllowedOrigins(Arrays.asList(
                 "http://localhost:8080",
-                "http://localhost:3000",
                 "http//localhost:5173",
-                "https://retinacareapp.vercel.app",
                 "https://frontend-eosin-nu.vercel.app"
         ));
 
