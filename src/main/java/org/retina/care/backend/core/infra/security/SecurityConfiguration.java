@@ -74,6 +74,7 @@ public class SecurityConfiguration {
         CorsConfiguration cors = new CorsConfiguration();
 
         cors.setAllowedOrigins(Arrays.asList(
+                "http://localhost:8080",
                 "http://localhost:3000",
                 "http//localhost:5173",
                 "https://retinacareapp.vercel.app",

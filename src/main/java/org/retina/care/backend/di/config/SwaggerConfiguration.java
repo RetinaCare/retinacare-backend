@@ -1,5 +1,7 @@
 package org.retina.care.backend.di.config;
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.servers.Server;
 import org.retina.care.backend.di.injectors.SwaggerCssInjector;
 import org.springdoc.core.properties.SwaggerUiConfigProperties;
 import org.springdoc.core.properties.SwaggerUiOAuthProperties;
@@ -19,5 +21,16 @@ public class SwaggerConfiguration {
             ObjectMapperProvider objectMapperProvider) {
 
         return new SwaggerCssInjector(swaggerUiConfig, swaggerUiOAuthProperties, swaggerWelcomeCommon, objectMapperProvider);
+    }
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .addServersItem(new Server()
+                        .url("https://retinacare-backend.ddns.net/api/v1")
+                        .description("Production"))
+                .addServersItem(new Server()
+                        .url("http://localhost:8080/api/v1")
+                        .description("Local"));
     }
 }
