@@ -2,6 +2,7 @@ package org.retina.care.backend.application.dto.prediction;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class PredictionRequestDto {
@@ -19,4 +20,7 @@ public class PredictionRequestDto {
     @Min(value = 100, message = "Blood pressure (mmHg) is below the threshold 100 mmHg")
     @Max(value = 180, message = "Blood pressure (mmHg) is above the threshold 180 mmHg")
     private Integer bloodPressureInMmHg;
+
+    @NotNull(message = "Fundus image is required")
+    private MultipartFile image;
 }
