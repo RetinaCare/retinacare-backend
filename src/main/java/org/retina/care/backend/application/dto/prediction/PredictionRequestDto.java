@@ -17,7 +17,7 @@ public class PredictionRequestDto {
     private Integer durationInYears;
 
     @NotNull(message = "Blood Pressure (mmHg) is required")
-    @Min(value = 100, message = "Blood pressure (mmHg) is below the threshold 100 mmHg")
+    @Min(value = 70, message = "Blood pressure (mmHg) is below the threshold 70 mmHg")
     @Max(value = 250, message = "Blood pressure (mmHg) is above the threshold 250 mmHg")
     private Integer bloodPressureInMmHg;
 
