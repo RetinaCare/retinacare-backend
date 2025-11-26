@@ -40,6 +40,11 @@ public class PredictionController {
                     responseCode = "500",
                     description = "Internal server error.",
                     content = @Content(schema = @Schema(implementation = HttpResponse.class))
+            ),
+            @ApiResponse(
+                    responseCode = "503",
+                    description = "Service Unavailable.",
+                    content = @Content(schema = @Schema(implementation = HttpResponse.class))
             )
     })
     public ResponseEntity<HttpResponse<PredictionResponseDto>> predict(@Valid @RequestBody @ModelAttribute PredictionRequestDto dto) {

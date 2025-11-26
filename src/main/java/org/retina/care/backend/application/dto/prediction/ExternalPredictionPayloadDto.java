@@ -5,7 +5,7 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data
-public class ExternalPredictionPayload {
+public class ExternalPredictionPayloadDto {
     private MultipartFile image;
     private String hba1c;
     @JsonProperty("blood_pressure")

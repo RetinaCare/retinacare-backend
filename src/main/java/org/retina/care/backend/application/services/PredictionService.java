@@ -1,6 +1,7 @@
 package org.retina.care.backend.application.services;
 
 import org.apache.coyote.BadRequestException;
+import org.retina.care.backend.application.dto.prediction.ExternalPredictionResponseDto;
 import org.retina.care.backend.application.dto.prediction.PredictionRequestDto;
 import org.retina.care.backend.application.dto.prediction.PredictionResponseDto;
 import org.slf4j.Logger;
@@ -14,6 +15,8 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import javax.naming.ServiceUnavailableException;
+
 @Service
 public class PredictionService {
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -26,15 +29,22 @@ public class PredictionService {
 
         // Request predictions from external service.
         RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.postForObject(PREDICTION_SERVICE_API_URL, externalRequest, String.class);
+        ExternalPredictionResponseDto result = restTemplate.postForObject(
+                PREDICTION_SERVICE_API_URL,
+                externalRequest,
+                ExternalPredictionResponseDto.class
+        );
 
-        logger.info("Prediction response: {}", result);
+        if (result == null) {
+            throw new ServiceUnavailableException("Prediction service returned no data");
+        }
 
-        // Dummy data for now
+        logger.info("Prediction was successful: {}", result);
+
         return new PredictionResponseDto(
-                1,
-                0.5,
-                "No action needed"
+                result.getConfidence(),
+                result.getRisk(),
+                result.getRecommendation()
         );
     }
 
