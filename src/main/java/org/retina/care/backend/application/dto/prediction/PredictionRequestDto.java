@@ -18,7 +18,7 @@ public class PredictionRequestDto {
 
     @NotNull(message = "Blood Pressure (mmHg) is required")
     @Min(value = 100, message = "Blood pressure (mmHg) is below the threshold 100 mmHg")
-    @Max(value = 180, message = "Blood pressure (mmHg) is above the threshold 180 mmHg")
+    @Max(value = 250, message = "Blood pressure (mmHg) is above the threshold 250 mmHg")
     private Integer bloodPressureInMmHg;
 
     @NotNull(message = "Fundus image is required")
