@@ -5,6 +5,7 @@ This repository contains the source code for Retina Care's main API. Written in 
 ## Table of Contents
 
 - [Features](#features)
+- [System Design](#system-design)
 - [Up and Running](#up-and-running)
 - [Environment Variables](#environment-variables)
 - [Usage](#usage)
@@ -16,7 +17,11 @@ This repository contains the source code for Retina Care's main API. Written in 
 
 - Authentication: sign-up, sign-in, forget-password using secure stateless JWTs.
 - Access token refresh and token rotation.
-- Cron job schedule for deleting expired tokens.
+- Automated expired token deletion using cron jobs.
+
+## System Design
+
+![arch.jpg](/docs/images/arch.jpg)
 
 ## Up and Running
 
