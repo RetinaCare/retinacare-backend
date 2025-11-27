@@ -5,7 +5,7 @@ This repository contains the source code for Retina Care's main API. Written in 
 ## Table of Contents
 
 - [Features](#features)
-- [System Design](#system-design)
+- [System Architecture](#system-architecture)
 - [Up and Running](#up-and-running)
 - [Environment Variables](#environment-variables)
 - [Usage](#usage)
@@ -18,10 +18,31 @@ This repository contains the source code for Retina Care's main API. Written in 
 - Authentication: sign-up, sign-in, forget-password using secure stateless JWTs.
 - Access token refresh and token rotation.
 - Automated expired token deletion using cron jobs.
+- Risk progression metrics via external microservice, called internally.
 
-## System Design
+## System Architecture
 
-![arch.jpg](/docs/images/arch.jpg)
+| Relevant High Level Components  |
+| - |
+| ![arch.jpg](/docs/images/arch.jpg) |
+
+At the core of the system, is our backend written in Java Spring. It exposes the endpoints for clients to authenticate and get diabetic retinopathy predictions. It also serves as the middleman between the web client and our internal ML models and prediction microservice.
+
+#### Primary Database
+
+  We use Postgres as our primary database of choice due to the simple reason that it is battle-tested, mature, and FOSS.
+  
+#### Server Strategy
+
+  We do not use any managed PaaS (Platform-as-a-Service). Instead, our database and necessary services are hosted on a Virtual Private Server. This gives us a greater handle over   deployments and cost. After evaluating our options, we landed on a Debian 13 VPS running on a Digital Ocean droplet, Coolify for self-hosted deployments and Traefik as our routing proxy.
+  
+#### Object Storage
+
+The machine learning model is stored on Digital Ocean spaces, which is an S3 compatible storage unit. This is where the [prediction service](https://github.com/RetinaCare/prediction-service) loads from before listening to incoming requests.
+
+### Continuous Integration & Deployments
+
+We follow a CI/CD model, this ensures that the newest changes are automatically built and pushed without manual intervention. It also allows us to pin-point errors whenever a workflow run fails. The workflow is triggered on push events to the main branch, then the code is checked-out, built using Docker, and published to the Docker Container Registry. From there, we have a Coolify webhook that is triggered immedately - which starts a deployment event on our VPS.
 
 ## Up and Running
 
